@@ -11,9 +11,13 @@
 //Coba class
 class entrydata {
     public $nama, 
-           $namaOrtu, 
-           $noHp, 
-           $sosmed;
+           $namaOrtu;
+          
+
+
+    private $sosmed;//visibility 'private' hanya bisa diakses di class ini saja           
+
+    protected $noHp;//visibility 'protected' hanya bisa diakses oleh class itu sendiri dan turunannya, kalau 'private' hanya bisa diakses oleh class itu sendiri
 
     //Fungsi constructor supaya lebih efisien dalam mengisi property
     public function __construct($nama, $namaOrtu, $noHp, $sosmed) {
@@ -26,11 +30,14 @@ class entrydata {
     
     //Fungsi Mengambil dan menampilkan data
     public function getData() {
-        $str = "nama : {$this->nama}, namaOrtu : {$this->namaOrtu}, noHp : {$this->noHp}, sosmed : {$this->sosmed}";
+        $str = "Nama : {$this->nama}, Nama Ortu : {$this->namaOrtu}, noHp : {$this->noHp}, Sosmed : {$this->sosmed}";
         return $str;
         
     }
 
+    public function getSosmed() {//membuat fungsi baru untuk mengambil property sosmed karena 'visibility private'
+        return $this->sosmed;
+    }
 }
 
 
@@ -49,6 +56,10 @@ Class pria extends entrydata {
         return $str;
     } 
 
+    public function getNoHp() {//membuat fungsi baru untuk mengambil property noHp karena 'visibility protected'
+        return $this->noHp;
+    }
+
 
 }
 
@@ -66,18 +77,28 @@ Class wanita extends entrydata {
         return $str;
     } 
 
+    public function getNoHp() {//membuat fungsi baru untuk mengambil property noHp karena 'visibility protected'
+        return $this->noHp;
+    }
 }
 
 $datapria =new pria ("adi","yudhi","085746630294","instagram", "katun");
-$datawanita =new wanita ("adi","yudhi","085746630294","instagram","pashmina");
+$datawanita =new wanita ("DIna","Budi","085746630294","Whatsapp","pashmina");
 
 
 echo $datapria->dataLengkap();
 echo "<br>";
 echo $datawanita->dataLengkap();
-echo "<br>";
-echo $datapria->dataLengkap($nama);
+echo "<hr>";
 
+//Mengambil nilai satu property dari class entrydata
+echo $datapria->nama;//langsung mengambil property nama dari class entrydata
+echo "<br>";
+echo $datapria->celana;//langsung mengambil property celana dari class entrydata
+echo "<br>";
+echo $datapria->getNoHp();//langsung mengambil property noHp dari class entrydata
+echo "<br>";
+echo $datawanita->getSosmed();//langsung mengambil property sosmed dari class entrydata
 
 
 
