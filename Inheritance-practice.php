@@ -9,7 +9,7 @@
 <body>
 <?php
 //Coba class
-class entrydata {
+class entryData {
     public $nama, 
            $namaOrtu, 
            $noHp, 
@@ -35,7 +35,7 @@ class entrydata {
 
 
 //Coba inheritance child class
-Class pria extends entrydata {
+Class pria extends entryData {
     
     public $celana;
 
@@ -52,7 +52,7 @@ Class pria extends entrydata {
 
 }
 
-Class wanita extends entrydata {
+Class wanita extends entryData {
     
     public $hijab;
     
@@ -76,7 +76,7 @@ echo $datapria->dataLengkap();
 echo "<br>";
 echo $datawanita->dataLengkap();
 echo "<br>";
-echo $datapria->dataLengkap($nama);
+echo $datapria->dataLengkap();
 
 
 
